@@ -4,43 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagine Fuori Posto – Davide Mariani</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- SEO -->
 	<meta name="description" content="Pagine Fuori Posto – Il sito ufficiale di Davide Mariani. Libri, narrativa, thriller psicologico, romanzi d’autore e mondi fuori posto.">
 	<meta name="keywords" content="Pagine Fuori Posto, Davide Mariani, libri, autore, thriller, narrativa, romanzi, scrittore">
 	<meta name="author" content="Davide Mariani">
 	<meta name="robots" content="index, follow">
-	<meta name="google-site-verification" content="5_qSeiEBv1MvXTw-zKKsFBsp9sUT7ZzBRloWNLsP1V8" />
+
+    <!-- Verifica Google -->
+    <meta name="google-site-verification" content="5_qSeiEBv1MvXTw-zKKsFBsp9sUT7ZzBRloWNLsP1V8" />
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
+<header class="sticky-header">
     <nav>
         <a href="index.html" class="active">Home</a>
         <a href="libri.html">Libri</a>
-        <a href="https://www.amazon.it/stores/Davide-Mariani/author/B0FGJZ9WMP"
-           target="_blank">Pagina Autore Amazon</a>
+        <a href="https://www.amazon.it/stores/Davide-Mariani/author/B0FGJZ9WMP" target="_blank">Pagina Autore Amazon</a>
     </nav>
 </header>
 
-<section class="hero-color">
+<section class="hero">
     <div class="hero-overlay"></div>
 
-    <div class="hero-container">
+    <div class="hero-content">
         <img src="assets/logo.jpg" alt="Logo Pagine Fuori Posto" class="hero-logo">
 
-        <h1>Pagine Fuori Posto</h1>
+        <h1 class="fade-in-title">Pagine Fuori Posto</h1>
 
-        <p class="hero-subtitle">
+        <p class="fade-in-subtitle">
             Storie che non stanno mai dove dovrebbero.
         </p>
 
-        <a href="libri.html" class="hero-btn">Scopri i libri</a>
+        <a href="libri.html" class="cta-btn fade-in-cta">Scopri i libri</a>
     </div>
 </section>
 
 <footer>
     <p>&copy; 2025 – Pagine Fuori Posto</p>
 </footer>
+
+<!-- JS: Header che diventa nero quando scrolli -->
+<script>
+document.addEventListener("scroll", function() {
+    const header = document.querySelector(".sticky-header");
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+</script>
 
 </body>
 </html>
