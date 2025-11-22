@@ -1,162 +1,188 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="internal">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Libro – Pagine Fuori Posto</title>
+
+    <!-- Fonts eleganti -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-    <header class="navbar">
-        <div class="logo">
-            <a href="index.html">Pagine Fuori Posto</a>
-        </div>
+<body class="internal">
+
+<header class="navbar">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo">Pagine Fuori Posto</a>
         <nav>
             <a href="index.html">Home</a>
             <a href="libri.html" class="active">Libri</a>
             <a href="eventi.html">Eventi</a>
-            <a href="https://www.amazon.it/stores/Davide-Mariani/author/B0FGJZ9WMP" target="_blank">
-                Pagina Autore Amazon
-            </a>
+            <a href="https://www.amazon.it/stores/Davide-Mariani/author/B0FGJZ9WMP" target="_blank">Pagina Autore</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <main class="book-detail">
-        <div class="book-detail-container">
-            <div class="book-detail-cover">
-                <img id="book-cover" src="" alt="">
-            </div>
-            <div class="book-detail-info">
-                <h1 id="book-title"></h1>
-                <p id="book-description" class="book-detail-description"></p>
-                <div class="book-detail-actions">
-                    <a id="book-link" href="#" target="_blank" class="btn-primary">
-                        Acquista su Amazon
-                    </a>
-                    <a href="libri.html" class="back-link">← Torna alla lista dei libri</a>
-                </div>
-            </div>
+<section class="book-detail-section">
+    <div class="book-detail-wrapper">
+
+        <div class="book-cover-container">
+            <img id="book-cover" src="" alt="" class="book-cover-img">
         </div>
-    </main>
 
-    <footer>
-        © 2025 – Pagine Fuori Posto
-    </footer>
+        <div class="book-info">
+            <h1 id="book-title" class="book-title"></h1>
+            <p id="book-description" class="book-description"></p>
 
-    <script>
-        // Catalogo libri
-        const books = {
-            "il-riflesso-dell-altro": {
-                title: "Il riflesso dell’Altro: Il volto dietro il vetro sa chi sei",
-                cover: "assets/il-riflesso-dell-altro.jpg",
-                link: "https://www.amazon.it/dp/B0FHJTZ3VK",
-                description: `Roma. Una città antica e febbrile, dove le ombre sembrano avere memoria.
+            <a id="book-link" href="#" target="_blank" class="btn-primary">
+                Acquista su Amazon
+            </a>
+
+            <br><br>
+
+            <a href="libri.html" class="back-link">
+                ← Torna alla lista dei libri
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2025 – Pagine Fuori Posto
+</footer>
+
+<script>
+/* ===========================
+   Catalogo LIBRI (descrizioni complete)
+   =========================== */
+
+const books = {
+
+    "il-riflesso-dell-altro": {
+        title: "Il riflesso dell’Altro: Il volto dietro il vetro sa chi sei",
+        cover: "assets/il-riflesso-dell-altro.jpg",
+        link: "https://www.amazon.it/dp/B0FHJTZ3VK",
+        description: `Roma. Una città antica e febbrile, dove le ombre sembrano avere memoria.
 
 Luca Ferri, psicologo forense, è chiamato a indagare sulla morte di una donna solitaria, trovata con un messaggio stretto tra le dita: “Io sono l’altro”. Quello che inizia come un’indagine sul confine fra suggestione e follia diventa presto un viaggio nell’abisso di uno specchio che non riflette più la realtà, ma qualcosa di più profondo e minaccioso.
 
 Tra appartamenti silenziosi, sanatori abbandonati e corridoi interrotti dal respiro dell’ignoto, Ferri scopre che i riflessi possono replicare la coscienza, alimentarsi dei nostri ricordi e reclamare un posto nel mondo. Una presenza si insinua dietro il vetro, un doppio perfetto e imperfetto insieme, pronto a oltrepassare la soglia.
 
 “Il riflesso dell’Altro” è un thriller psicologico che mescola atmosfere rarefatte e ossessioni ipnotiche, un’indagine sull’identità che si frammenta e sulla vertigine di scoprire che lo sguardo nello specchio potrebbe non essere mai stato davvero il tuo.`
-            },
-            "frigo-gatto-crisi": {
-                title: "Frigo, Gatto, Crisi",
-                cover: "assets/frigo-gatto-crisi.jpg",
-                link: "https://www.amazon.it/dp/B0FF59Q6BG",
-                description: `Manuale di sopravvivenza per bipedi emotivamente inadatti.
+    },
+
+    "frigo-gatto-crisi": {
+        title: "Frigo, Gatto, Crisi",
+        cover: "assets/frigo-gatto-crisi.jpg",
+        link: "https://www.amazon.it/dp/B0FF59Q6BG",
+        description: `Manuale di sopravvivenza per bipedi emotivamente inadatti.
 
 Tra frigoriferi pieni di tentazioni, gatti giudicanti e crisi esistenziali da salotto, questo libro racconta – con ironia feroce e sincerità disarmante – cosa significa affrontare ansia, malinconia e panico quotidiano senza mai perdere del tutto il senso dell’umorismo.
 
 Un ibrido tra diario emotivo, guida semiseria e seduta di terapia abusiva: perfetto per chi si sente sempre “di troppo” e vorrebbe solo riuscire a stare al mondo senza rompersi a ogni passo.`
-            },
-            "grigliati-vivi": {
-                title: "Grigliati vivi – Manuale per sopravvivere ai picnic",
-                cover: "assets/grigliati-vivi.jpg",
-                link: "https://www.amazon.it/dp/B0FMYD4QXL",
-                description: `Ti hanno invitato a un picnic e già immagini zanzare, parenti urlanti, nuvole minacciose e cibo bruciato? Allora questo manuale è per te.
+    },
+
+    "grigliati-vivi": {
+        title: "Grigliati vivi – Manuale per sopravvivere ai picnic",
+        cover: "assets/grigliati-vivi.jpg",
+        link: "https://www.amazon.it/dp/B0FMYD4QXL",
+        description: `Ti hanno invitato a un picnic e già immagini zanzare, parenti urlanti, nuvole minacciose e cibo bruciato? Allora questo manuale è per te.
 
 “Grigliati vivi” raccoglie tutte le disavventure possibili attorno a una griglia: dal vicino piromane al “re del barbecue” autoproclamato, passando per bambini iperattivi e insalate di riso che sfidano le leggi dell’igiene.
 
 Un vademecum comico e lucidissimo per affrontare la stagione di picnic, grigliate e pranzi all’aperto senza perdere la dignità – e possibilmente nemmeno la pazienza.`
-            },
-            "casa-dolce-incubo": {
-                title: "Casa dolce incubo – Ristrutturare è umano, sopravvivere è un miracolo",
-                cover: "assets/casa-dolce-incubo.jpg",
-                link: "https://www.amazon.it/dp/B0FP9HQCYQ",
-                description: `Pensavi che rifare casa fosse un sogno. Scoprirai che è un incubo in più puntate.
+    },
+
+    "casa-dolce-incubo": {
+        title: "Casa dolce incubo – Ristrutturare è umano, sopravvivere è un miracolo",
+        cover: "assets/casa-dolce-incubo.jpg",
+        link: "https://www.amazon.it/dp/B0FP9HQCYQ",
+        description: `Pensavi che rifare casa fosse un sogno. Scoprirai che è un incubo in più puntate.
 
 Tra preventivi che lievitano, muratori fantasmi, materiali introvabili e polvere ovunque, questo libro racconta con sarcasmo e lucidità cosa significa affrontare una ristrutturazione mantenendo, per quanto possibile, la sanità mentale.
 
 Una guida narrativa per chi sta per iniziare i lavori, per chi ci è dentro fino al collo o per chi ha giurato “mai più” ma continua a guardare piastrelle su internet alle tre di notte.`
-            },
-            "come-rovinarsi-le-vacanze": {
-                title: "Come rovinarsi le vacanze uno zaino alla volta",
-                cover: "assets/come-rovinarsi-le-vacanze.jpg",
-                link: "https://www.amazon.it/dp/B0FKTKP844",
-                description: `Viaggi zaino in spalla, libertà assoluta, orizzonti nuovi… e una quantità di disastri potenziali praticamente infinita.
+    },
+
+    "come-rovinarsi-le-vacanze": {
+        title: "Come rovinarsi le vacanze uno zaino alla volta",
+        cover: "assets/come-rovinarsi-le-vacanze.jpg",
+        link: "https://www.amazon.it/dp/B0FKTKP844",
+        description: `Viaggi zaino in spalla, libertà assoluta, orizzonti nuovi… e una quantità di disastri potenziali praticamente infinita.
 
 Dall’ostello sbagliato ai compagni di viaggio impossibili, dai mezzi di trasporto improbabili alle sveglie all’alba per vedere l’ennesimo monumento, questo libro racconta, con tono ironico e affettuoso, come le vacanze possano trasformarsi in percorsi a ostacoli.
 
 Per chi ama partire, per chi sogna di farlo e per chi, dopo certe esperienze, vorrebbe solo restare sul divano ma continua ostinatamente a fare la valigia.`
-            },
-            "cinema-labirinto": {
-                title: "Cinema Labirinto – Nessuno esce come è entrato",
-                cover: "assets/cinema-labirinto.jpg",
-                link: "https://www.amazon.it/dp/B0FNQFTQS2",
-                description: `Un cinema impossibile, che cambia forma a ogni proiezione. Una sala in cui i film sembrano conoscere lo spettatore più di quanto lui conosca se stesso.
+    },
+
+    "cinema-labirinto": {
+        title: "Cinema Labirinto – Nessuno esce come è entrato",
+        cover: "assets/cinema-labirinto.jpg",
+        link: "https://www.amazon.it/dp/B0FNQFTQS2",
+        description: `Un cinema impossibile, che cambia forma a ogni proiezione. Una sala in cui i film sembrano conoscere lo spettatore più di quanto lui conosca se stesso.
 
 In “Cinema Labirinto” ogni stanza, corridoio e schermo è una porta verso un ricordo, un rimpianto o una paura. I personaggi si perdono tra pellicole che non finiscono mai, finali che si riscrivono da soli e storie che rifiutano di rimanere sullo schermo.
 
 Un romanzo surreale e visionario sul potere delle immagini, sui film che ci abitano e su quanto sia facile restare intrappolati dentro le proprie narrazioni.`
-            },
-            "la-torre-infinita": {
-                title: "La Torre Infinita",
-                cover: "assets/la-torre-infinita.jpg",
-                link: "https://www.amazon.it/dp/B0FTZG9HBW",
-                description: `Una torre che nessuno ha mai visto per intero. Una struttura che sembra non finire mai, piena di piani impossibili, scale sbagliate e stanze che non dovrebbero esistere.
+    },
+
+    "la-torre-infinita": {
+        title: "La Torre Infinita",
+        cover: "assets/la-torre-infinita.jpg",
+        link: "https://www.amazon.it/dp/B0FTZG9HBW",
+        description: `Una torre che nessuno ha mai visto per intero. Una struttura che sembra non finire mai, piena di piani impossibili, scale sbagliate e stanze che non dovrebbero esistere.
 
 Un gruppo di ragazzi si ritrova coinvolto in un’impresa che mescola avventura, mistero e amicizia: salire la Torre Infinita significa affrontare prove fisiche e mentali, ma soprattutto fare i conti con ciò che ognuno nasconde a se stesso.
 
 Un romanzo per ragazzi e giovani adulti che unisce esplorazione, crescita e senso del meraviglioso con un’ombra di inquietudine che rende ogni piano un passo più vicino all’ignoto.`
-            },
-            "il-giusto": {
-                title: "Il Giusto – Un romanzo sulla colpa e la redenzione",
-                cover: "assets/il-giusto.jpg",
-                link: "https://www.amazon.it/dp/B0D3F1GRPQ",
-                description: `Un errore può cambiare una vita intera. Ma cosa succede quando non puoi più far finta che non sia successo?
+    },
+
+    "il-giusto": {
+        title: "Il Giusto – Un romanzo sulla colpa e la redenzione",
+        cover: "assets/il-giusto.jpg",
+        link: "https://www.amazon.it/dp/B0D3F1GRPQ",
+        description: `Un errore può cambiare una vita intera. Ma cosa succede quando non puoi più far finta che non sia successo?
 
 “Il Giusto” segue il percorso di un uomo costretto a fare i conti con una colpa che ha provato a seppellire per anni. Tra aule scolastiche, incontri inattesi e orologi che sembrano misurare più il peso del passato che il passare del tempo, la domanda diventa una sola: è ancora possibile rimediare?
 
 Un romanzo intenso sulla responsabilità, sulla vergogna e sulla fragile possibilità di perdonarsi – o almeno di provare a farlo.`
-            }
-        };
+    }
+};
 
-        function getQueryParam (name) {
-            const params = new URLSearchParams(window.location.search);
-            return params.get(name);
-        }
 
-        const id = getQueryParam('id');
-        const book = books[id];
+/* ===========================
+   Funzioni di caricamento pagina
+   =========================== */
 
-        const coverEl = document.getElementById('book-cover');
-        const titleEl = document.getElementById('book-title');
-        const descEl  = document.getElementById('book-description');
-        const linkEl  = document.getElementById('book-link');
+function getQueryParam(name) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name);
+}
 
-        if (!book) {
-            titleEl.textContent = "Libro non trovato";
-            descEl.textContent = "Il libro che stai cercando non è disponibile. Torna alla lista dei libri.";
-            coverEl.style.display = "none";
-            linkEl.style.display = "none";
-        } else {
-            document.title = book.title + " – Pagine Fuori Posto";
-            coverEl.src = book.cover;
-            coverEl.alt = book.title;
-            titleEl.textContent = book.title;
-            descEl.textContent = book.description;
-            linkEl.href = book.link;
-        }
-    </script>
+const id = getQueryParam('id');
+const book = books[id];
+
+const coverEl = document.getElementById('book-cover');
+const titleEl = document.getElementById('book-title');
+const descEl  = document.getElementById('book-description');
+const linkEl  = document.getElementById('book-link');
+
+if (!book) {
+    titleEl.textContent = "Libro non trovato";
+    descEl.textContent = "Il libro che stai cercando non è disponibile.";
+    coverEl.style.display = "none";
+    linkEl.style.display = "none";
+} else {
+    document.title = book.title + " – Pagine Fuori Posto";
+    coverEl.src = book.cover;
+    coverEl.alt = book.title;
+    titleEl.textContent = book.title;
+    descEl.textContent = book.description;
+    linkEl.href = book.link;
+}
+</script>
+
 </body>
 </html>

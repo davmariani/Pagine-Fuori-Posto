@@ -9,7 +9,7 @@
 
 <body class="internal">
 
-<header class="navbar solid">
+<header>
     <div class="container nav-bar">
         <a href="index.html" class="logo">Pagine Fuori Posto</a>
         <nav>
@@ -24,49 +24,72 @@
 <section class="page-section">
     <h1>Tutti i libri</h1>
 
+    <!-- FILTRI -->
+    <div class="filter-buttons">
+    <button class="filter-btn active" data-filter="all">📚 Tutti</button>
+    <button class="filter-btn" data-filter="comici">😄 Umoristico</button>
+    <button class="filter-btn" data-filter="seri">📖 Narrativo</button>
+</div>
+
+
+    <!-- LIBRI -->
     <div class="books-grid">
 
-        <!-- IL RIFLESSO DELL'ALTRO -->
-        <a href="libro.html?id=il-riflesso-dell-altro" class="book-card">
-            <img src="assets/il-riflesso-dell-altro.jpg" alt="Il Riflesso dell'Altro">
+        <div class="book-card seri">
+            <a href="libro.html?id=il-riflesso-dell-altro">
+                <img src="assets/il-riflesso-dell-altro.jpg" alt="Il Riflesso dell'Altro">
+            </a>
             <h2>Il Riflesso dell'Altro</h2>
-        </a>
+        </div>
 
-        <!-- FRIGO GATTO CRISI -->
-        <a href="libro.html?id=frigo-gatto-crisi" class="book-card">
-            <img src="assets/frigo-gatto-crisi.jpg" alt="Frigo, Gatto, Crisi">
+        <div class="book-card comici">
+            <a href="libro.html?id=frigo-gatto-crisi">
+                <img src="assets/frigo-gatto-crisi.jpg" alt="Frigo, Gatto, Crisi">
+            </a>
             <h2>Frigo, Gatto, Crisi</h2>
-        </a>
+        </div>
 
-        <!-- GRIGLIATI VIVI -->
-        <a href="libro.html?id=grigliati-vivi" class="book-card">
-            <img src="assets/grigliati-vivi.jpg" alt="Grigliati Vivi">
+        <div class="book-card comici">
+            <a href="libro.html?id=grigliati-vivi">
+                <img src="assets/grigliati-vivi.jpg" alt="Grigliati Vivi">
+            </a>
             <h2>Grigliati Vivi</h2>
-        </a>
+        </div>
 
-        <!-- CASA DOLCE INCUBO -->
-        <a href="libro.html?id=casa-dolce-incubo" class="book-card">
-            <img src="assets/casa-dolce-incubo.jpg" alt="Casa Dolce Incubo">
+        <div class="book-card comici">
+            <a href="libro.html?id=casa-dolce-incubo">
+                <img src="assets/casa-dolce-incubo.jpg" alt="Casa Dolce Incubo">
+            </a>
             <h2>Casa Dolce Incubo</h2>
-        </a>
+        </div>
 
-        <!-- IL GIUSTO -->
-        <a href="libro.html?id=il-giusto" class="book-card">
-            <img src="assets/il-giusto.jpg" alt="Il Giusto">
+        <div class="book-card seri">
+            <a href="libro.html?id=il-giusto">
+                <img src="assets/il-giusto.jpg" alt="Il Giusto">
+            </a>
             <h2>Il Giusto</h2>
-        </a>
+        </div>
 
-        <!-- CINEMA LABIRINTO -->
-        <a href="libro.html?id=cinema-labirinto" class="book-card">
-            <img src="assets/cinema-labirinto.jpg" alt="Cinema Labirinto">
+        <div class="book-card seri">
+            <a href="libro.html?id=cinema-labirinto">
+                <img src="assets/cinema-labirinto.jpg" alt="Cinema Labirinto">
+            </a>
             <h2>Cinema Labirinto</h2>
-        </a>
+        </div>
 
-        <!-- LA TORRE INFINITA -->
-        <a href="libro.html?id=la-torre-infinita" class="book-card">
-            <img src="assets/la-torre-infinita.jpg" alt="La Torre Infinita">
+        <div class="book-card seri">
+            <a href="libro.html?id=la-torre-infinita">
+                <img src="assets/la-torre-infinita.jpg" alt="La Torre Infinita">
+            </a>
             <h2>La Torre Infinita</h2>
-        </a>
+        </div>
+
+        <div class="book-card comici">
+            <a href="libro.html?id=come-rovinarsi-le-vacanze">
+                <img src="assets/come-rovinarsi-le-vacanze.jpg" alt="Come rovinarsi le vacanze">
+            </a>
+            <h2>Come rovinarsi le vacanze</h2>
+        </div>
 
     </div>
 </section>
@@ -74,6 +97,44 @@
 <footer>
     © 2025 – Pagine Fuori Posto
 </footer>
+
+<script>
+/* FILTRO LIBRI CON ANIMAZIONE */
+const filterBtns = document.querySelectorAll(".filter-btn");
+const books = document.querySelectorAll(".book-card");
+
+filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const category = btn.dataset.filter;
+
+        books.forEach(book => {
+            
+            book.style.opacity = 0;
+
+            setTimeout(() => {
+                if (category === "all" || book.classList.contains(category)) {
+                    book.style.display = "block";
+
+                    setTimeout(() => {
+                        book.style.opacity = 1;
+                    }, 50);
+
+                } else {
+                    book.style.display = "none";
+                }
+            }, 200);
+        });
+    });
+});
+</script>
+
+</body>
+</html>
+
 
 </body>
 </html>
