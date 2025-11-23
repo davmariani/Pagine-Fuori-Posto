@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagine Fuori Posto – Libri self made</title>
+    <title>Pagine Fuori Posto</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,11 +12,13 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="home">
 
 <header class="site-header">
     <div class="container header-inner">
         <a href="index.html" class="logo-text">Pagine Fuori Posto</a>
+
         <nav class="main-nav">
             <a href="index.html" class="nav-link active">Home</a>
             <a href="libri.html" class="nav-link">Libri</a>
@@ -29,6 +31,7 @@
 <main>
     <section class="hero">
         <div class="hero-overlay"></div>
+
         <div class="hero-content">
             <img src="assets/logo.jpg" alt="Logo Pagine Fuori Posto" class="hero-logo">
 
@@ -45,17 +48,43 @@
 </footer>
 
 <script>
-    // Header che da trasparente diventa nero in scroll
-    const header = document.querySelector('.site-header');
-    function onScroll() {
-        if (window.scrollY > 10) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+// HEADER SCROLL
+const header = document.querySelector('.site-header');
+function onScroll() {
+    if (window.scrollY > 10) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+}
+document.addEventListener('scroll', onScroll);
+onScroll();
+
+// 🔥 ANIMAZIONE LIBRI VOLANTI SULL'IMMAGINE GRANDE
+const heroLogo = document.querySelector(".hero-logo");
+
+if (heroLogo) {
+    heroLogo.addEventListener("mouseenter", () => {
+        
+        const books = 25; // NUMERO LIBRI
+        const maxDistance = 250; // DISTANZA
+        const maxRotation = 380; // ROTAZIONE
+        
+        for (let i = 0; i < books; i++) {
+            const book = document.createElement("div");
+            book.className = "big-flying-book";
+            book.textContent = "📘"; 
+
+            const rect = heroLogo.getBoundingClientRect();
+            book.style.left = (rect.left + rect.width / 2) + "px";
+            book.style.top = (rect.top + window.scrollY + rect.height / 2) + "px";
+
+            book.style.setProperty("--dx", (Math.random()*maxDistance*2 - maxDistance) + "px");
+            book.style.setProperty("--dy", (Math.random()*maxDistance*2 - maxDistance) + "px");
+            book.style.setProperty("--rot", (Math.random()*maxRotation - 180) + "deg");
+
+            document.body.appendChild(book);
+            setTimeout(() => book.remove(), 1500);
         }
-    }
-    document.addEventListener('scroll', onScroll);
-    onScroll();
+    });
+}
 </script>
 
 </body>

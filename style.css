@@ -504,6 +504,67 @@ footer {
     opacity: 0.9;
 }
 
+/* LIBRI VOLANTI (SOLO HOME, perché il markup .logo è solo lì) --------- */
+
+.logo {
+    position: relative;
+}
+
+.flying-books {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    overflow: visible;
+    transform: translateX(-50%);
+}
+
+/* Forma del mini-libro */
+.book {
+    position: absolute;
+    width: 12px;
+    height: 10px;
+    background: white;
+    border: 2px solid #222;
+    border-radius: 2px;
+    opacity: 0;
+    transform-origin: center;
+}
+
+/* Logo che cresce leggermente */
+.logo:hover .logo-text {
+    transform: scale(1.08);
+    transition: transform 0.3s ease;
+}
+
+/* Animazione comune */
+@keyframes fly {
+    0%   { transform: translate(0,0) rotate(0deg); opacity: 0.9; }
+    20%  { opacity: 1; }
+    100% { opacity: 0;
+           transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
+    }
+}
+
+/* Traiettorie per ciascun libro */
+.b1  { --dx: -20px;  --dy: -40px;  --rot: 45deg;  }
+.b2  { --dx: 10px;   --dy: -50px;  --rot: -30deg; }
+.b3  { --dx: 30px;   --dy: -35px;  --rot: 90deg;  }
+.b4  { --dx: -35px;  --dy: -25px;  --rot: -60deg; }
+.b5  { --dx: 5px;    --dy: -65px;  --rot: 20deg;  }
+.b6  { --dx: -15px;  --dy: -55px;  --rot: 70deg;  }
+.b7  { --dx: 40px;   --dy: -20px;  --rot: 110deg; }
+.b8  { --dx: -45px;  --dy: -45px;  --rot: -120deg;}
+.b9  { --dx: 25px;   --dy: -60px;  --rot: 150deg; }
+.b10 { --dx: -5px;   --dy: -30px;  --rot: -15deg; }
+
+/* Attivazione dell’esplosione di libri */
+.logo:hover .book {
+    animation: fly 1.4s ease-out forwards;
+}
+
 /* RESPONSIVE ----------------------------------------------------------- */
 
 @media (max-width: 768px) {
@@ -554,5 +615,55 @@ footer {
     .toggle-btn {
         align-self: stretch;
         text-align: center;
+    }
+}
+/* ANIMAZIONE LIBRI VOLANTI SUL LOGO */
+.flying-book {
+    position: absolute;
+    font-size: 18px;
+    pointer-events: none;
+    opacity: 1;
+    animation: fly 1s ease-out forwards;
+}
+
+@keyframes fly {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    50% { transform: translate(-10px, -40px) scale(1.4); opacity: 0.9; }
+    100% { transform: translate(20px, -80px) scale(0.8); opacity: 0; }
+}
+/* Effetto libri volanti sulla hero image */
+.flying-book {
+    position: absolute;
+    font-size: 22px;
+    pointer-events: none;
+    opacity: 1;
+    animation: fly-up 1.2s ease-out forwards;
+}
+
+@keyframes fly-up {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    50% { opacity: 0.9; }
+    100% {
+        transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
+        opacity: 0;
+    }
+}
+.big-flying-book {
+    position: absolute;
+    font-size: 2.6rem; /* ✨ PIÙ GRANDE */
+    pointer-events: none;
+    animation: flybook 1.5s ease-out forwards;
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+@keyframes flybook {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy)))
+                   rotate(var(--rot));
     }
 }
