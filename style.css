@@ -1,359 +1,558 @@
-/* --------------------------------------------------
-   RESET GENERALE
--------------------------------------------------- */
-
-* {
+/* RESET SEMPLICE ------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    color: #fff;
-    background: url("assets/hero-bg.jpg") center/cover fixed no-repeat;
-    min-height: 100vh;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #f5f5f5;
+    background: #000;
+    position: relative;
 }
 
-/* --------------------------------------------------
-   NAVBAR
--------------------------------------------------- */
-
-header {
+/* Sfondo comune (biblioteca) ------------------------------------------- */
+body::before {
+    content: "";
     position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.85);
-    padding: 18px 0;
-    z-index: 1000;
-    backdrop-filter: blur(6px);
+    inset: 0;
+    background-image: url("assets/hero-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(2px);
+    transform: scale(1.03);
+    z-index: -2;
 }
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(0,0,0,0.45), rgba(0,0,0,0.85));
+    z-index: -1;
+}
+
+/* ELEMENTI GLOBALI ----------------------------------------------------- */
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: min(1120px, 100% - 32px);
+    margin: 0 auto;
 }
 
-.logo {
-    font-family: "Merriweather", serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: #fff !important;
+.page-content {
+    padding-top: 96px;
+    padding-bottom: 48px;
 }
 
-nav a {
-    margin-left: 25px;
-    text-decoration: none;
+/* HEADER --------------------------------------------------------------- */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 10px 0;
+    transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+    background: transparent;
     color: #fff;
-    font-weight: 400;
-    font-size: 18px;
 }
 
-nav a:hover,
-nav a.active {
-    color: #ffcc66;
+.site-header.scrolled,
+body.internal .site-header {
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
 
-/* --------------------------------------------------
-   SEZIONE HOME
--------------------------------------------------- */
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.logo-text {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav-link {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #f5f5f5;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #ffb347;
+    transition: width 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* HERO HOME ------------------------------------------------------------ */
 
 .hero {
-    height: 90vh;
+    position: relative;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    padding-top: 80px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(0,0,0,0.25), rgba(0,0,0,0.85));
+    z-index: 0;
 }
 
 .hero-content {
-    background: rgba(0,0,0,0.45);
-    padding: 30px 45px;
-    border-radius: 14px;
+    position: relative;
+    z-index: 1;
+    padding: 120px 16px 80px;
 }
 
 .hero-logo {
-    max-width: 200px;
-    margin-bottom: 15px;
+    width: 170px;
+    max-width: 60vw;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,0.55));
 }
 
 .hero h1 {
-    font-family: "Merriweather", serif;
-    font-size: 48px;
-    margin-bottom: 10px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    margin-bottom: 12px;
 }
 
-.hero p {
-    font-size: 20px;
-    margin-bottom: 25px;
-}
-
-.cta {
-    background: #ffcc66;
-    color: #000;
-    padding: 12px 22px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-/* --------------------------------------------------
-   PAGINA LIBRI
--------------------------------------------------- */
-
-.page-section {
-    margin-top: 140px;
-    text-align: center;
-}
-
-.page-section h1 {
-    font-family: "Merriweather", serif;
-    font-size: 42px;
-    margin-bottom: 40px;
-}
-
-.books-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 40px;
-    padding: 20px 40px;
-}
-
-.book-card {
-    text-decoration: none;
-    color: #fff;
-    display: block;
-}
-
-.book-card img {
-    width: 160px;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.book-card h2 {
-    font-family: "Merriweather", serif;
-    font-size: 20px;
-}
-/* --------------------------------------------------
-   FILTRI LIBRI con icone + stile rifinito
--------------------------------------------------- */
-
-.filter-buttons {
-    margin-bottom: 35px;
-}
-
-.filter-btn {
-    background: rgba(255,255,255,0.18);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.25);
-    padding: 10px 20px;
-    margin: 0 8px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 17px;
-    transition: 0.25s;
-    backdrop-filter: blur(4px);
-}
-
-.filter-btn:hover {
-    background: rgba(255,255,255,0.32);
-}
-
-.filter-btn.active {
-    background: #ffcc66;
-    border-color: #ffcc66;
-    color: #000;
-    font-weight: 600;
-}
-
-
-/* --------------------------------------------------
-   ANIMAZIONI BOOKS
--------------------------------------------------- */
-
-.book-card {
-    opacity: 1;
-    transition: opacity 0.25s ease-in-out;
-}
-
-/* Hover immagine */
-.book-card img {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.book-card img:hover {
-    transform: scale(1.04);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
-}
-
-/* --------------------------------------------------
-   PAGINA EVENTI
--------------------------------------------------- */
-
-.eventi-page {
-    min-height: 100vh;
-    padding: 140px 20px;
-    text-align: center;
-}
-
-.eventi-logo {
-    width: 180px;
-    margin-bottom: 25px;
-    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
-}
-
-.eventi-title {
-    font-family: "Merriweather", serif;
-    font-size: 38px;
-    margin-bottom: 10px;
-}
-
-.eventi-text {
-    font-size: 20px;
+.hero-subtitle {
+    font-size: 1rem;
     opacity: 0.9;
+    margin-bottom: 32px;
 }
 
-/* --------------------------------------------------
-   PAGINA LIBRO DETTAGLIO
--------------------------------------------------- */
-
-.book-detail-section {
-    padding-top: 150px;
-    padding-bottom: 60px;
-}
-
-.book-detail-wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    background: rgba(0,0,0,0.55);
-    padding: 40px;
-    border-radius: 16px;
-    display: flex;
-    gap: 40px;
-    backdrop-filter: blur(4px);
-}
-
-.book-cover-img {
-    width: 260px;
-    border-radius: 12px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.4);
-}
-
-.book-info {
-    flex: 1;
-    text-align: left;
-}
-
-.book-title {
-    font-family: "Merriweather", serif;
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.book-description {
-    white-space: pre-line;
-    line-height: 1.6;
-    font-size: 18px;
-    margin-bottom: 25px;
-}
+/* BOTTONI -------------------------------------------------------------- */
 
 .btn-primary {
-    background: #ffcc66;
-    color: #000;
-    font-weight: 600;
-    padding: 12px 22px;
+    display: inline-block;
+    background: linear-gradient(135deg, #ffb347, #ff7b00);
+    color: #1b1208;
+    padding: 12px 26px;
+    border-radius: 999px;
     text-decoration: none;
-    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.55);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.7);
+    filter: brightness(1.05);
 }
 
 .back-link {
     display: inline-block;
-    margin-top: 15px;
-    color: #fff;
-    font-size: 16px;
+    margin-top: 8px;
+    color: #ffd89b;
+    text-decoration: none;
+    font-size: 0.9rem;
 }
 
-/* --------------------------------------------------
-   FOOTER
--------------------------------------------------- */
-
-footer {
-    margin-top: 80px;
-    padding: 25px;
-    text-align: center;
-    background: rgba(0,0,0,0.75);
-    font-size: 16px;
+.back-link:hover {
+    text-decoration: underline;
 }
 
-/* --------------------------------------------------
-   RESPONSIVE
--------------------------------------------------- */
+/* PAGINE INTERNE ------------------------------------------------------- */
 
-@media (max-width: 900px) {
-
-    .book-detail-wrapper {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .book-cover-img {
-        width: 200px;
-        margin: 0 auto;
-    }
-
-    .book-info {
-        text-align: center;
-    }
+.page-section {
+    width: min(1120px, 100% - 32px);
+    margin: 0 auto;
+    background: rgba(12, 10, 9, 0.92);
+    border-radius: 18px;
+    padding: 32px 22px 30px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.7);
 }
 
-@media (max-width: 600px) {
-
-    nav a {
-        margin-left: 12px;
-        font-size: 16px;
-    }
-
-    .hero h1 {
-        font-size: 34px;
-    }
+.page-section h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
-/* --------------------------------------------------
-   FILTRI LIBRI
--------------------------------------------------- */
 
-.filter-buttons {
-    margin-bottom: 30px;
+/* LIBRI – FILTRI E GRID ----------------------------------------------- */
+
+.books-page {
+    margin-top: 24px;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.filters-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.filters-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
 }
 
 .filter-btn {
-    background: rgba(255,255,255,0.2);
-    color: #fff;
-    border: none;
-    padding: 10px 18px;
-    margin: 0 6px;
-    border-radius: 6px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(20,20,20,0.8);
+    color: #f5f5f5;
+    padding: 6px 16px;
+    font-size: 0.85rem;
     cursor: pointer;
-    font-size: 16px;
-    transition: 0.2s;
-}
-
-.filter-btn:hover {
-    background: rgba(255,255,255,0.35);
+    transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
 }
 
 .filter-btn.active {
-    background: #ffcc66;
-    color: #000;
+    background: linear-gradient(135deg, #ffb347, #ff7b00);
+    border-color: transparent;
+    color: #1b1208;
+    transform: translateY(-1px);
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 20px;
+}
+
+.book-card {
+    position: relative;
+    background: rgba(0,0,0,0.8);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.6);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.25s ease, max-height 0.25s ease;
+    max-height: 600px;
+}
+
+.book-card-inner {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+}
+
+.book-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 2 / 3;
+}
+
+.book-card h2 {
+    font-size: 1rem;
+    margin: 10px 14px 2px;
     font-weight: 600;
+}
+
+.book-author {
+    margin: 0 14px 6px;
+    font-size: 0.8rem;
+    opacity: 0.85;
+}
+
+.badge {
+    display: inline-block;
+    margin: 0 14px 6px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-humor {
+    background: rgba(255, 179, 71, 0.2);
+    color: #ffd89b;
+    border: 1px solid rgba(255, 179, 71, 0.7);
+}
+
+.badge-narrative {
+    background: rgba(152, 198, 255, 0.17);
+    color: #cde3ff;
+    border: 1px solid rgba(152, 198, 255, 0.7);
+}
+
+.book-card-cta {
+    margin: 0 14px 12px;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.8);
+}
+
+/* Animazione filtri */
+.book-card.hide {
+    opacity: 0;
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* PAGINA DETTAGLIO LIBRO ----------------------------------------------- */
+
+.book-detail {
+    margin-top: 24px;
+}
+
+.book-detail-container {
+    width: min(1120px, 100% - 32px);
+    margin: 0 auto;
+    background: rgba(10, 8, 8, 0.96);
+    border-radius: 20px;
+    padding: 26px 24px 30px;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.85);
+    display: flex;
+    gap: 26px;
+    align-items: flex-start;
+}
+
+.book-detail-cover img {
+    width: 230px;
+    max-width: 40vw;
+    border-radius: 14px;
+    box-shadow: 0 14px 35px rgba(0,0,0,0.9);
+    object-fit: cover;
+}
+
+.book-detail-info {
+    flex: 1;
+}
+
+.book-detail-info h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin-bottom: 6px;
+}
+
+.book-detail-author {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-bottom: 14px;
+}
+
+.book-detail-description {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    white-space: pre-line;
+    margin-bottom: 18px;
+}
+
+.book-detail-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* EVENTI --------------------------------------------------------------- */
+
+.eventi-section {
+    text-align: center;
+    width: min(620px, 100% - 32px);
+    margin: 24px auto 0;
+    background: rgba(10, 8, 8, 0.95);
+    border-radius: 20px;
+    padding: 32px 24px 34px;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.85);
+}
+
+.eventi-logo {
+    width: 110px;
+    margin-bottom: 18px;
+}
+
+.eventi-title {
+    font-family: "Playfair Display", serif;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+}
+
+.eventi-text {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+/* AUTORI --------------------------------------------------------------- */
+
+.authors-section h1 {
+    margin-bottom: 24px;
+}
+
+.author-card {
+    background: rgba(0,0,0,0.8);
+    padding: 20px 18px 22px;
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.7);
+}
+
+.author-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.author-header h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.toggle-btn {
+    background: linear-gradient(135deg, #ffb347, #ff7b00);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    color: #1b1208;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.author-content {
+    display: none;
+    margin-top: 14px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.author-content p + p {
+    margin-top: 10px;
+}
+
+.author-amazon-link {
+    display: inline-block;
+    margin-top: 16px;
+    background: #ffb347;
+    color: #1b1208;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.author-amazon-link:hover {
+    filter: brightness(1.05);
+}
+
+/* FOOTER --------------------------------------------------------------- */
+
+footer {
+    text-align: center;
+    padding: 18px 10px 22px;
+    font-size: 0.8rem;
+    color: #ddd;
+    opacity: 0.9;
+}
+
+/* RESPONSIVE ----------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-nav {
+        gap: 10px;
+        font-size: 0.8rem;
+    }
+
+    .page-content {
+        padding-top: 110px;
+    }
+
+    .page-section {
+        padding: 24px 18px 26px;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .book-detail-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 22px 18px 26px;
+    }
+
+    .book-detail-cover img {
+        width: 210px;
+        max-width: 60vw;
+        margin-bottom: 10px;
+    }
+
+    .book-detail-info {
+        text-align: left;
+        width: 100%;
+    }
+
+    .author-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-btn {
+        align-self: stretch;
+        text-align: center;
+    }
 }

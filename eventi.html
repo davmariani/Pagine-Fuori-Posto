@@ -4,32 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventi – Pagine Fuori Posto</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="internal">
 
-<header>
-    <div class="container nav-bar">
-        <a href="index.html" class="logo">Pagine Fuori Posto</a>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="libri.html">Libri</a>
-            <a href="eventi.html" class="active">Eventi</a>
-            <a href="https://www.amazon.it/stores/Davide-Mariani/author/B0FGJZ9WMP" target="_blank">Pagina Autore</a>
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo-text">Pagine Fuori Posto</a>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="libri.html" class="nav-link">Libri</a>
+            <a href="eventi.html" class="nav-link active">Eventi</a>
+            <a href="autori.html" class="nav-link">Autori</a>
         </nav>
     </div>
 </header>
 
-<section class="page-section eventi-page">
-    <img src="assets/logo.jpg" class="eventi-logo" alt="Logo Pagine Fuori Posto">
-    <h1 class="eventi-title">Prossimamente…</h1>
-    <p class="eventi-text">Stiamo preparando nuovi eventi e presentazioni.</p>
-</section>
+<main class="page-content">
+    <section class="eventi-section">
+        <img src="assets/logo.jpg" class="eventi-logo" alt="Logo Pagine Fuori Posto">
+        <h1 class="eventi-title">Prossimamente…</h1>
+        <p class="eventi-text">Stiamo preparando nuove presentazioni e incontri dedicati ai libri di Pagine Fuori Posto.</p>
+        <p class="eventi-text">Torna a trovarci o segui la pagina autore su Amazon per restare aggiornato.</p>
+    </section>
+</main>
 
 <footer>
     © 2025 – Pagine Fuori Posto
 </footer>
+
+<script>
+    const header = document.querySelector('.site-header');
+    function onScroll() {
+        if (window.scrollY > 10) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+    document.addEventListener('scroll', onScroll);
+    onScroll();
+</script>
 
 </body>
 </html>

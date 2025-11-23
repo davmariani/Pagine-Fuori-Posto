@@ -1,140 +1,274 @@
 <!DOCTYPE html>
-<html lang="it" class="internal">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagine Fuori Posto – Libri</title>
+    <title>Libri – Pagine Fuori Posto</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="internal">
 
-<header>
-    <div class="container nav-bar">
-        <a href="index.html" class="logo">Pagine Fuori Posto</a>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="libri.html" class="active">Libri</a>
-            <a href="eventi.html">Eventi</a>
-            <a href="https://www.amazon.it/stores/Davide-Mariani/author/B0FGJZ9WMP" target="_blank">Pagina Autore</a>
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo-text">Pagine Fuori Posto</a>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="libri.html" class="nav-link active">Libri</a>
+            <a href="eventi.html" class="nav-link">Eventi</a>
+            <a href="autori.html" class="nav-link">Autori</a>
         </nav>
     </div>
 </header>
 
-<section class="page-section">
-    <h1>Tutti i libri</h1>
+<main class="page-content">
+    <section class="page-section books-page">
+        <h1>Tutti i libri</h1>
 
-    <!-- FILTRI -->
-    <div class="filter-buttons">
-    <button class="filter-btn active" data-filter="all">📚 Tutti</button>
-    <button class="filter-btn" data-filter="comici">😄 Umoristico</button>
-    <button class="filter-btn" data-filter="seri">📖 Narrativo</button>
-</div>
+        <div class="filters">
+            <div class="filters-group">
+                <span class="filters-label">Genere:</span>
+                <button class="filter-btn filter-btn-genre active" data-genre="all">⭐ Tutti</button>
+                <button class="filter-btn filter-btn-genre" data-genre="humor">😺 Umoristico</button>
+                <button class="filter-btn filter-btn-genre" data-genre="narrative">📚 Narrativo</button>
+            </div>
 
-
-    <!-- LIBRI -->
-    <div class="books-grid">
-
-        <div class="book-card seri">
-            <a href="libro.html?id=il-riflesso-dell-altro">
-                <img src="assets/il-riflesso-dell-altro.jpg" alt="Il Riflesso dell'Altro">
-            </a>
-            <h2>Il Riflesso dell'Altro</h2>
+            <div class="filters-group">
+                <span class="filters-label">Autore:</span>
+                <button class="filter-btn filter-btn-author active" data-author="all">Tutti</button>
+                <div id="author-filters-container"></div>
+            </div>
         </div>
 
-        <div class="book-card comici">
-            <a href="libro.html?id=frigo-gatto-crisi">
-                <img src="assets/frigo-gatto-crisi.jpg" alt="Frigo, Gatto, Crisi">
-            </a>
-            <h2>Frigo, Gatto, Crisi</h2>
-        </div>
+        <div class="books-grid">
 
-        <div class="book-card comici">
-            <a href="libro.html?id=grigliati-vivi">
-                <img src="assets/grigliati-vivi.jpg" alt="Grigliati Vivi">
-            </a>
-            <h2>Grigliati Vivi</h2>
-        </div>
+            <!-- NARRATIVI -->
+            <div class="book-card" data-genre="narrative" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=il-riflesso-dell-altro" class="book-card-inner">
+                    <img src="assets/il-riflesso-dell-altro.jpg" alt="Il Riflesso dell'Altro">
+                    <h2>Il riflesso dell’Altro</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-narrative">Narrativo</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
 
-        <div class="book-card comici">
-            <a href="libro.html?id=casa-dolce-incubo">
-                <img src="assets/casa-dolce-incubo.jpg" alt="Casa Dolce Incubo">
-            </a>
-            <h2>Casa Dolce Incubo</h2>
-        </div>
+            <div class="book-card" data-genre="narrative" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=l-alibi-perfetto" class="book-card-inner">
+                    <img src="assets/l-alibi-perfetto.jpg" alt="L'Alibi Perfetto">
+                    <h2>L’Alibi Perfetto</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-narrative">Narrativo</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
 
-        <div class="book-card seri">
-            <a href="libro.html?id=il-giusto">
-                <img src="assets/il-giusto.jpg" alt="Il Giusto">
-            </a>
-            <h2>Il Giusto</h2>
-        </div>
+            <div class="book-card" data-genre="narrative" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=il-giusto" class="book-card-inner">
+                    <img src="assets/il-giusto.jpg" alt="Il Giusto">
+                    <h2>Il Giusto</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-narrative">Narrativo</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
 
-        <div class="book-card seri">
-            <a href="libro.html?id=cinema-labirinto">
-                <img src="assets/cinema-labirinto.jpg" alt="Cinema Labirinto">
-            </a>
-            <h2>Cinema Labirinto</h2>
-        </div>
+            <div class="book-card" data-genre="narrative" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=cinema-labirinto" class="book-card-inner">
+                    <img src="assets/cinema-labirinto.jpg" alt="Cinema Labirinto">
+                    <h2>Cinema Labirinto</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-narrative">Narrativo</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
 
-        <div class="book-card seri">
-            <a href="libro.html?id=la-torre-infinita">
-                <img src="assets/la-torre-infinita.jpg" alt="La Torre Infinita">
-            </a>
-            <h2>La Torre Infinita</h2>
-        </div>
+            <div class="book-card" data-genre="narrative" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=la-torre-infinita" class="book-card-inner">
+                    <img src="assets/la-torre-infinita.jpg" alt="La Torre Infinita">
+                    <h2>La Torre Infinita</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-narrative">Narrativo</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
 
-        <div class="book-card comici">
-            <a href="libro.html?id=come-rovinarsi-le-vacanze">
-                <img src="assets/come-rovinarsi-le-vacanze.jpg" alt="Come rovinarsi le vacanze">
-            </a>
-            <h2>Come rovinarsi le vacanze</h2>
-        </div>
+            <!-- UMORISTICI -->
+            <div class="book-card" data-genre="humor" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=frigo-gatto-crisi" class="book-card-inner">
+                    <img src="assets/frigo-gatto-crisi.jpg" alt="Frigo, Gatto, Crisi">
+                    <h2>Frigo, Gatto, Crisi</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-humor">Umoristico</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
 
-    </div>
-</section>
+            <div class="book-card" data-genre="humor" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=grigliati-vivi" class="book-card-inner">
+                    <img src="assets/grigliati-vivi.jpg" alt="Grigliati Vivi">
+                    <h2>Grigliati Vivi</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-humor">Umoristico</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
+
+            <div class="book-card" data-genre="humor" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=casa-dolce-incubo" class="book-card-inner">
+                    <img src="assets/casa-dolce-incubo.jpg" alt="Casa Dolce Incubo">
+                    <h2>Casa Dolce Incubo</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-humor">Umoristico</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
+
+            <div class="book-card" data-genre="humor" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=come-rovinarsi-le-vacanze" class="book-card-inner">
+                    <img src="assets/come-rovinarsi-le-vacanze.jpg" alt="Come rovinarsi le vacanze">
+                    <h2>Come rovinarsi le vacanze</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-humor">Umoristico</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
+
+            <div class="book-card" data-genre="humor" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=vita-da-adulti" class="book-card-inner">
+                    <img src="assets/vita-da-adulti.jpg" alt="Vita da Adulti">
+                    <h2>Vita da Adulti</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-humor">Umoristico</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
+
+            <div class="book-card" data-genre="humor" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=colleghi-d-assalto" class="book-card-inner">
+                    <img src="assets/colleghi-d-assalto.jpg" alt="Colleghi d'assalto">
+                    <h2>Colleghi d’assalto</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-humor">Umoristico</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
+
+            <div class="book-card" data-genre="humor" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=crocchette-bip-silenzi" class="book-card-inner">
+                    <img src="assets/crocchette-bip-silenzi.jpg" alt="Crocchette, Bip, Silenzi">
+                    <h2>Crocchette, Bip, Silenzi</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-humor">Umoristico</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
+
+            <div class="book-card" data-genre="humor" data-author="mariani" data-author-name="Davide Mariani">
+                <a href="libro.html?id=ferie-no-tragedie" class="book-card-inner">
+                    <img src="assets/ferie-no-tragedie.jpg" alt="Ferie? No, tragedie">
+                    <h2>Ferie? No, tragedie</h2>
+                    <p class="book-author">di Davide Mariani</p>
+                    <span class="badge badge-humor">Umoristico</span>
+                    <p class="book-card-cta">Apri la scheda libro →</p>
+                </a>
+            </div>
+
+        </div>
+    </section>
+</main>
 
 <footer>
     © 2025 – Pagine Fuori Posto
 </footer>
 
 <script>
-/* FILTRO LIBRI CON ANIMAZIONE */
-const filterBtns = document.querySelectorAll(".filter-btn");
-const books = document.querySelectorAll(".book-card");
+    // Header scroll
+    const header = document.querySelector('.site-header');
+    function onScroll() {
+        if (window.scrollY > 10) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+    document.addEventListener('scroll', onScroll);
+    onScroll();
 
-filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
+    const cards = document.querySelectorAll('.book-card');
 
-        filterBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+    let selectedGenre = 'all';
+    let selectedAuthor = 'all';
 
-        const category = btn.dataset.filter;
+    function applyFilters() {
+        cards.forEach(card => {
+            const cardGenre = card.dataset.genre;
+            const cardAuthor = card.dataset.author;
 
-        books.forEach(book => {
-            
-            book.style.opacity = 0;
+            const genreMatch = (selectedGenre === 'all' || selectedGenre === cardGenre);
+            const authorMatch = (selectedAuthor === 'all' || selectedAuthor === cardAuthor);
 
-            setTimeout(() => {
-                if (category === "all" || book.classList.contains(category)) {
-                    book.style.display = "block";
+            if (genreMatch && authorMatch) {
+                card.classList.remove('hide');
+            } else {
+                card.classList.add('hide');
+            }
+        });
+    }
 
-                    setTimeout(() => {
-                        book.style.opacity = 1;
-                    }, 50);
-
-                } else {
-                    book.style.display = "none";
-                }
-            }, 200);
+    // GENRE FILTERS
+    const genreButtons = document.querySelectorAll('.filter-btn-genre');
+    genreButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            genreButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedGenre = btn.dataset.genre;
+            applyFilters();
         });
     });
-});
+
+    // AUTHOR FILTERS (dinamici)
+    const authorButtonsStatic = document.querySelectorAll('.filter-btn-author');
+    const authorFiltersContainer = document.getElementById('author-filters-container');
+
+    const authorsMap = new Map(); // id -> name
+
+    cards.forEach(card => {
+        const id = card.dataset.author;
+        const name = card.dataset.authorName;
+        if (id && name && !authorsMap.has(id)) {
+            authorsMap.set(id, name);
+        }
+    });
+
+    authorsMap.forEach((name, id) => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn filter-btn-author';
+        btn.dataset.author = id;
+        btn.textContent = name;
+        authorFiltersContainer.appendChild(btn);
+    });
+
+    function wireAuthorButtons() {
+        const allAuthorButtons = document.querySelectorAll('.filter-btn-author');
+        allAuthorButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                allAuthorButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedAuthor = btn.dataset.author;
+                applyFilters();
+            });
+        });
+    }
+
+    wireAuthorButtons();
 </script>
-
-</body>
-</html>
-
 
 </body>
 </html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autori – Pagine Fuori Posto</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="internal">
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo-text">Pagine Fuori Posto</a>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="libri.html" class="nav-link">Libri</a>
+            <a href="eventi.html" class="nav-link">Eventi</a>
+            <a href="autori.html" class="nav-link active">Autori</a>
+        </nav>
+    </div>
+</header>
+
+<main class="page-content">
+    <section class="page-section authors-section">
+        <h1>I nostri autori</h1>
+
+        <!-- AUTORE: DAVIDE MARIANI -->
+        <div class="author-card">
+            <div class="author-header">
+                <h2>Davide Mariani</h2>
+                <button class="toggle-btn" onclick="toggleAuthor('mariani')">Mostra dettagli ▼</button>
+            </div>
+
+            <div id="mariani" class="author-content">
+                <p>
+                    Non sono uno scrittore di professione: scrivo per passione, perché da sempre mi affascina il potere delle storie.
+                    Per me la scrittura è un modo per fermarmi, osservare il mondo con occhi diversi e restituirne frammenti di ironia,
+                    stupore e immaginazione.
+                </p>
+                <p>
+                    Non amo chiudermi in un solo genere: mi piace spaziare, passare dal registro leggero e divertente a quello più
+                    visionario e fantastico. Ogni progetto nasce dall’esigenza di sperimentare e di dare voce a emozioni e situazioni
+                    che nella vita reale rischierebbero di passare inosservate.
+                </p>
+                <p>
+                    Accanto alla scrittura coltivo la musica e altre forme di creatività, convinto che le idee non abbiano confini e che
+                    ogni linguaggio possa arricchire l’altro. Per me questo non è un lavoro, ma un viaggio personale fatto di curiosità,
+                    tentativi e passioni che si intrecciano.
+                </p>
+                <p>
+                    Se sceglierai di leggere le mie pagine, spero che possano diventare per te un passaggio verso mondi diversi,
+                    da attraversare con leggerezza e con il piacere della scoperta.
+                </p>
+
+                <a class="author-amazon-link"
+                   href="https://www.amazon.it/stores/Davide-Mariani/author/B0FGJZ9WMP"
+                   target="_blank">
+                    Vai alla Pagina Autore Amazon →
+                </a>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    © 2025 – Pagine Fuori Posto
+</footer>
+
+<script>
+    const header = document.querySelector('.site-header');
+    function onScroll() {
+        if (window.scrollY > 10) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+    document.addEventListener('scroll', onScroll);
+    onScroll();
+
+    function toggleAuthor(id) {
+        const el = document.getElementById(id);
+        const btn = el.previousElementSibling.querySelector(".toggle-btn");
+
+        if (el.style.display === "block") {
+            el.style.display = "none";
+            btn.textContent = "Mostra dettagli ▼";
+        } else {
+            el.style.display = "block";
+            btn.textContent = "Nascondi dettagli ▲";
+        }
+    }
+</script>
+
+</body>
+</html>
